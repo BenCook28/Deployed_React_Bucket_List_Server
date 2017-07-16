@@ -1,4 +1,6 @@
 const Auth = require('./controllers/auth');
+var BucketList = require('./controllers/bucketlistcontroller');
+
 const passportService = require('./services/passport');
 const passport = require('passport');
 
@@ -14,4 +16,5 @@ module.exports = function(app){
 
 	app.post('/signup', Auth.signup);
 	app.post('/signin', requireSignin, Auth.signin);
+	app.post('/newitem', requireAuth, BucketList.addBucketList);
 }
